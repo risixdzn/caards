@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BrainCards
+
+Welcome to BrainCards, an AI-powered flashcard application built with Next.js, Prisma, and NextAuth. Study with ease by creating flashcards with the power of AI.
+
+## Features
+
+-   **AI-powered Flashcards:** Utilize the OpenAI API with ChatGPT 3.5 Turbo to generate flashcards based on user-provided prompts.
+
+-   **Organize Flashcards in Decks:** Group your flashcards into decks for better organization and efficient studying.
+
+-   **Color-Coded Decks:** Easily identify and distinguish decks with color-coded labels for a visually intuitive experience.
+
+-   **Import Flashcards from CSV:** Quickly import existing flashcards from CSV files to streamline the process of building your card collection.
+
+-   **Difficulty Classification:** Classify flashcards with different difficulty levels such as easy, medium, and hard to tailor your study sessions.
+
+-   **Dynamic Prompts:** Create flashcards with prompts that can be anything, allowing for a diverse range of learning content.
+
+## Technologies Used
+
+-   **Next.js:** A React framework for building web applications with a focus on developer experience and performance.
+
+-   **Prisma:** A database toolkit that provides a type-safe and auto-generated query builder for Node.js and TypeScript.
+
+-   **NextAuth:** Authentication library for Next.js applications, providing easy integration with various authentication providers.
+
+-   **OpenAI API with ChatGPT 3.5 Turbo:** Leverage the power of advanced natural language processing for dynamic flashcard generation.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    git clone https://github.com/your-username/braincards-web-app.git
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```bash
+    cd braincards-web-app
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Set up your environment variables. Create a `.env.local` file in the root of your project and add the necessary variables.
 
-## Learn More
+    ```env
+    NEXT_PUBLIC_OPENAI_API_KEY=your-openai-api-key
+    DATABASE_URL=your-database-url
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm run dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We welcome contributions! If you have ideas for new features or improvements, feel free to open an issue or submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Happy studying with BrainCards! 🧠🔗
