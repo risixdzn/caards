@@ -34,7 +34,10 @@ const WorkflowStep = ({
 
 export default function Workflow() {
     return (
-        <section className='w-full h-auto py-28 flex flex-col items-center gap-2 lg:gap-6'>
+        <section
+            id='overview'
+            className='w-full h-auto py-28 flex flex-col items-center gap-2 lg:gap-6'
+        >
             <h2 className='text-4xl  lg:text-6xl font-semibold flex items-center gap-4 lg:gap-8'>
                 <Wind className='inline-block scale-[1.5] lg:scale-[3]' />
                 Study with ease.

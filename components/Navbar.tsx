@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import Cards from "../public/Cards.svg";
+import LoginBtn from "./LoginBtn";
+import { Session } from "next-auth";
 
-function Navbar() {
+function Navbar({ session }: { session: Session | null }) {
     const paths = [
-        { label: "Overview", href: "/" },
-        { label: "Pricing", href: "/" },
+        { label: "Overview", href: "/#overview" },
+        { label: "Pricing", href: "/#pricing" },
         { label: "Contact", href: "/" },
     ];
 
@@ -49,9 +51,9 @@ function Navbar() {
                     className={`transition-all relative flex items-center justify-between w-full max-w-[110rem] duration-300
          ${scrollPosition >= 100 ? " max-w-full" : " max-w-[110rem] mt-4"}`}
                 >
-                    <div id='logo'>
+                    <Link id='logo' href='/'>
                         <Image width={150} src={TextLogo} alt='Braincards Logo' />
-                    </div>
+                    </Link>
                     <nav className='absolute left-1/2 -translate-x-[50%] lg:block hidden'>
                         <ul className='flex gap-16 '>
                             {paths.map((path, index) => (
@@ -62,9 +64,7 @@ function Navbar() {
                         </ul>
                     </nav>
                     <div id='cta'>
-                        <Button className='bg-[#F5A3D4] rounded-full h-8 lg:px-5 lg:text-base border-[1px] border-[#E192C2] hover:bg-[#E192C2]'>
-                            Sign Up
-                        </Button>
+                        <LoginBtn session={session} />
                         <Menu
                             onClick={() => setSidebarOpen(!sidebarOpen)}
                             className='lg:hidden inline-block ml-4 z-[100]'
@@ -106,7 +106,7 @@ function Navbar() {
                     id='bottom'
                     className='flex items-center justify-end w-[calc(100%-5rem)] -translate-y-[2.5rem] h-10 absolute bottom-0'
                 >
-                    <Button className=' bg-[#F5A3D4] rounded-full h-8 lg:px-5 lg:text-base border-[1px] border-[#E192C2] hover:bg-[#E192C2]'>
+                    <Button className=' bg-braincards rounded-full h-8 lg:px-5 lg:text-base border-[1px] border-braincards-dark hover:bg-braincards-dark'>
                         Sign Up
                     </Button>
                 </div>
