@@ -50,6 +50,10 @@ module.exports = {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
+                braincards: {
+                    DEFAULT: "hsl(var(--braincards))",
+                    dark: "hsl(var(--braincards-dark))",
+                },
             },
 
             borderRadius: {

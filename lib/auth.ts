@@ -1,7 +1,8 @@
-import { DefaultSession, NextAuthOptions } from "next-auth";
+import { DefaultSession, NextAuthOptions, getServerSession } from "next-auth";
 import { prisma } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
+import Email from "next-auth/providers/email";
 
 declare module "next-auth" {
     interface Session extends DefaultSession {
@@ -23,20 +24,28 @@ export const authOptions: NextAuthOptions = {
     },
     callbacks: {
         jwt: async ({ token }) => {
+            //finds the user in the database
             const db_user = await prisma.user.findFirst({
                 where: {
                     email: token.email,
                 },
             });
+            //binds the db user id to the token
             if (db_user) {
                 token.id = db_user.id;
+                // Update user's information in the database
+                await prisma.user.update({
+                    where: { id: db_user.id },
+                    data: { name: token.name ? token.name : token.email?.split("@")[0] },
+                });
             }
             return token;
         },
         session: ({ session, token }) => {
+            //binds token stuff to session
             if (token) {
                 session.user.id = token.id;
-                session.user.name = token.name;
+                session.user.name = token.name ? token.name : token.email?.split("@")[0];
                 session.user.email = token.email;
                 session.user.image = token.picture;
             }
@@ -50,5 +59,24 @@ export const authOptions: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
+        Email({
+            server: {
+                host: process.env.SMTP_HOST,
+                port: Number(process.env.SMTP_PORT),
+                auth: {
+                    user: process.env.SMTP_USER,
+                    pass: process.env.SMTP_PASSWORD,
+                },
+            },
+            from: process.env.EMAIL_FROM,
+        }),
     ],
+    pages: {
+        signIn: "/auth/signin",
+        verifyRequest: "/auth/verify-request",
+    },
+};
+
+export const getAuthSession = () => {
+    return getServerSession(authOptions);
 };

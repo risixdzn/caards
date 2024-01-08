@@ -26,7 +26,7 @@ function Hero() {
                         className='w-20 lg:w-32 inline-block -translate-y-2'
                     />{" "}
                     Cards
-                    <br></br>powered by <span className='text-[#F5A3D4]'>AI</span>
+                    <br></br>powered by <span className='text-braincards'>AI</span>
                 </h1>
                 <p className='lg:text-xl text-muted-foreground max-w-[15rem] lg:max-w-md text-center'>
                     Study with ease by creating <b>flashcards</b> with the <b>power of AI</b>.
@@ -38,7 +38,10 @@ function Hero() {
                     >
                         See more
                     </Button>
-                    <Button className='bg-[#F5A3D4] rounded-full lg:px-7 lg:text-xl lg:py-6 border-[1px] border-[#E192C2] hover:bg-[#E192C2] shadow-md'>
+                    <Button
+                        variant={"braincards"}
+                        className='rounded-full lg:px-7 lg:text-xl lg:py-6 shadow-md'
+                    >
                         Get started
                     </Button>
                 </div>
@@ -90,7 +93,7 @@ function Hero() {
             ></div>
             <div
                 id='bg-rounded-center-gradient'
-                className=' blur-[40px] w-[14rem] h-[14rem] lg:w-[28rem] lg:h-[28rem] bg-[#F5A3D4] rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+                className=' blur-[40px] w-[14rem] h-[14rem] lg:w-[28rem] lg:h-[28rem] bg-braincards rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
             ></div>
         </section>
     );

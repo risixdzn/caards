@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SessionProvider } from "next-auth/react";
+import { getAuthSession } from "@/lib/auth";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -14,11 +16,12 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const session = await getAuthSession();
     return (
-        <html lang='en'>
+        <html lang='en' className='scroll-smooth'>
             <body className={`${figtree.className} antialised`}>
-                <Navbar />
+                <Navbar session={session} />
                 {children}
                 <Footer />
             </body>
