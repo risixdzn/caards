@@ -1,4 +1,4 @@
-import "../globals.css";
+import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import Navbar from "@/components/Navbar";

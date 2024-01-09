@@ -86,6 +86,9 @@ module.exports = {
             backgroundImage: {
                 "hero-pattern": "url(../public/square-pattern-64px.svg)",
                 "hero-pattern2px": "url(../public/square-pattern-64px-2pxb.svg)",
+                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                "gradient-conic":
+                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
         },
     },
