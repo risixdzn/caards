@@ -5,7 +5,7 @@ import Cards from "@/public/Cards.svg";
 
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState, useRef } from "react";
 import { signIn } from "next-auth/react";
 import google from "@/public/google.svg";
 import twitter from "@/public/twitter.svg";
@@ -29,8 +29,16 @@ export function Login({ verify }: { verify?: boolean }) {
         signIn("email", { email });
     };
 
-    const loginform_email = localStorage.getItem("loginform_email");
-    const email_domain = loginform_email ? loginform_email?.split("@")[1] : "test.com";
+    //needed to use the ref and change it on useeffect to prevent localstorage to being invoked on server
+    const loginform_email = useRef<string | null>(null);
+
+    useEffect(() => {
+        loginform_email.current = localStorage.getItem("loginform_email");
+    }, []);
+
+    const email_domain = loginform_email.current
+        ? loginform_email.current?.split("@")[1]
+        : "test.com";
     const domain_href = `https://${email_domain}`;
 
     return (

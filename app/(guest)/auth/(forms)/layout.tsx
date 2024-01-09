@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function AuthLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className='p-5'>
             <div className='flex w-full min-h-[calc(100vh-(1.25rem*2))] rounded-lg border-border border-[1px] items-center justify-center'>

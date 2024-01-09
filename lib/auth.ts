@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import { DefaultSession, NextAuthOptions, getServerSession } from "next-auth";
 import { prisma } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -74,9 +75,14 @@ export const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/auth/signin",
         verifyRequest: "/auth/verify-request",
+        error: "/auth/error",
     },
 };
 
 export const getAuthSession = () => {
     return getServerSession(authOptions);
+};
+
+export const signOutUser = ({ redirect }: { redirect?: string }) => {
+    return signOut({ callbackUrl: redirect ? redirect : "/" });
 };
