@@ -12,7 +12,7 @@ export default async function Account() {
                 <li>ID:{session?.user.id}</li>
                 <li>Name{session?.user.name}</li>
             </ul>
-            <Link href='/api/auth/signout'>
+            <Link href='/auth/signout'>
                 <Button>Sign Out</Button>
             </Link>
         </div>

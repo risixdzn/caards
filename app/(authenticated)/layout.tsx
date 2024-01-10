@@ -1,7 +1,8 @@
 import "@/app/globals.css";
+import { ReactQueryProvider } from "@/lib/ReactQueryProvider";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
-import { getAuthSession } from "@/lib/auth";
+import { ReactNode } from "react";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -13,11 +14,22 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+    children,
+    modal,
+}: {
+    children: ReactNode;
+    modal: ReactNode;
+}) {
     // const session = await getAuthSession();
     return (
-        <html lang='en' className='scroll-smooth'>
-            <body className={`${figtree.className} antialised`}>{children}</body>
-        </html>
+        <ReactQueryProvider>
+            <html lang='en' className='scroll-smooth'>
+                <body className={`${figtree.className} antialised`}>
+                    {modal}
+                    {children}
+                </body>
+            </html>
+        </ReactQueryProvider>
     );
 }

@@ -36,9 +36,7 @@ export function Login({ verify }: { verify?: boolean }) {
         loginform_email.current = localStorage.getItem("loginform_email");
     }, []);
 
-    const email_domain = loginform_email.current
-        ? loginform_email.current?.split("@")[1]
-        : "test.com";
+    const email_domain = loginform_email.current ? loginform_email.current?.split("@")[1] : "";
     const domain_href = `https://${email_domain}`;
 
     return (
@@ -94,7 +92,7 @@ export function Login({ verify }: { verify?: boolean }) {
                         ></Input>
                     )}
                     <Button
-                        type='button'
+                        type='submit'
                         variant={"braincards"}
                         className='w-full h-9'
                         disabled={verify || loading}
