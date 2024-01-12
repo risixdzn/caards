@@ -5,13 +5,13 @@ import Cards from "@/public/Cards.svg";
 
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { ChangeEvent, useEffect, useState, useRef } from "react";
+import { ChangeEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import google from "@/public/google.svg";
 import twitter from "@/public/twitter.svg";
 import github from "@/public/github.svg";
-import { CheckCircle, ExternalLink, Loader2, MailCheck } from "lucide-react";
-import Link from "next/link";
+import { CheckCircle, Loader2, MailCheck, XCircle } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 export function Login({ verify }: { verify?: boolean }) {
     const [email, setEmail] = useState("");
@@ -20,7 +20,6 @@ export function Login({ verify }: { verify?: boolean }) {
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         setEmail(event.target.value);
-        localStorage.setItem("loginform_email", event.target.value);
         return;
     };
 
@@ -29,15 +28,61 @@ export function Login({ verify }: { verify?: boolean }) {
         signIn("email", { email });
     };
 
-    //needed to use the ref and change it on useeffect to prevent localstorage to being invoked on server
-    const loginform_email = useRef<string | null>(null);
+    const searchParams = useSearchParams();
+    const error_code = searchParams.get("error")?.toLowerCase();
 
-    useEffect(() => {
-        loginform_email.current = localStorage.getItem("loginform_email");
-    }, []);
+    const renderError = (error: string): { message: string; code: string } => {
+        const error_messages: {
+            [key: string]: { message: string; code: string };
+        } = {
+            oauthsignin: {
+                message:
+                    "An unexpected error occurred while authorizing your login. Please try again.",
+                code: "OAuthCallback",
+            },
+            oauthcallback: {
+                message: "An error occurred on the auth provider response. Please try again.",
+                code: "OAuthCallback",
+            },
+            oauthcreateaccount: {
+                message:
+                    "We couldn't create the authentication provider in the database. Thats our fault.",
+                code: "OAuthCreateAccount",
+            },
+            emailcreateaccount: {
+                message: "We couldn't register your data in the database. Thats our fault.",
+                code: "EmailCreateAccount",
+            },
+            callback: {
+                message: "An error occurred on our auth API. Please try again.",
+                code: "Callback",
+            },
+            oauthaccountnotlinked: {
+                message: "The email used is linked with another account.",
+                code: "OAuthAccount",
+            },
+            emailsignin: {
+                message: "Oops... The email couldn't be delivered.",
+                code: "EmailSignin",
+            },
+            credentialssignin: {
+                message: "The authorize callback returned null in the Credentials provider.",
+                code: "CredentialsSignin",
+            },
+            sessionrequired: {
+                message: "The content of this page requires you to be signed in.",
+                code: "SessionRequired",
+            },
+            default: {
+                message: "Oops... You encountered an error. We're sorry for that.",
+                code: "Default",
+            },
+        };
 
-    const email_domain = loginform_email.current ? loginform_email.current?.split("@")[1] : "";
-    const domain_href = `https://${email_domain}`;
+        return error_messages[error] || error_messages["default"];
+    };
+
+    const error = renderError(error_code as string);
 
     return (
         <div className='flex items-center flex-col w-[350px] space-y-6'>
@@ -65,14 +110,8 @@ export function Login({ verify }: { verify?: boolean }) {
                 <>
                     {" "}
                     <p className='text-[0.92rem] text-center'>
-                        Click the link sent to your{" "}
-                        <b className='hover:underline'>
-                            <Link href={domain_href} target='_blank'>
-                                {email_domain}
-                                <ExternalLink className='h-4 w-4 inline-block text-foreground ml-1' />
-                            </Link>
-                        </b>{" "}
-                        email to <b>seamlessly</b> sign in<br></br>
+                        Click the link sent to your <b className='hover:underline'>email</b> to{" "}
+                        <b>seamlessly</b> sign in<br></br>
                         <span className='text-xs font-semibold'>Also check your spam folder!</span>
                     </p>
                     <p className='text-muted-foreground text-xs text-center max-w-[15rem]'>
@@ -135,8 +174,14 @@ export function Login({ verify }: { verify?: boolean }) {
             </form>
 
             <p className='px-8 text-center text-sm text-muted-foreground'>
-                New here? No worries! If you don&apos;t have an account, we&apos;ll create one for
-                you!
+                {!error_code ? (
+                    "New here? No worries! If you don't have an account, we'll create one for you!"
+                ) : (
+                    <span className='text-destructive'>
+                        <XCircle className='h-4 w-4 mr-1 inline-block' />
+                        {error.message}
+                    </span>
+                )}
             </p>
         </div>
     );

@@ -12,7 +12,7 @@ import {
     DialogClose,
 } from "../ui/dialog";
 import { useState, useEffect } from "react";
-import { DoorOpen, LogOut, X } from "lucide-react";
+import { DoorOpen, Loader2, LogOut, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useQuery } from "react-query";
@@ -37,7 +37,9 @@ export default function SignoutModal() {
     const openChangeModal = (x: boolean) => {
         setOpen(x);
         if (x === false) {
-            router.back();
+            setTimeout(() => {
+                router.back();
+            }, 200);
         }
         return;
     };
@@ -50,6 +52,8 @@ export default function SignoutModal() {
     });
 
     const csrfToken = data?.csrfToken;
+
+    const [loading, setLoading] = useState(false);
 
     return (
         <Dialog open={open} onOpenChange={openChangeModal}>
@@ -80,9 +84,15 @@ export default function SignoutModal() {
                         >
                             Cancel
                         </Button>
-                        <Button type='submit' className='mt-2'>
-                            Sign out
-                            <LogOut className='inline-block ml-1 h-4 w-4' />
+                        <Button type='submit' onClick={() => setLoading(true)} className='mt-2'>
+                            {!loading ? (
+                                <>
+                                    Sign out
+                                    <LogOut className='inline-block ml-1 h-4 w-4' />
+                                </>
+                            ) : (
+                                <Loader2 className='h-4 w-4 animate-spin' />
+                            )}
                         </Button>
                     </DialogFooter>
                 </form>
