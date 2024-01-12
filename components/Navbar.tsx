@@ -45,17 +45,21 @@ function Navbar({ session }: { session: Session | null }) {
             <header
                 id='navbar'
                 className={`w-full z-[99] fixed px-10  flex items-center justify-center transition-all duration-300 transition-
-        ${scrollPosition >= 100 ? "bg-white h-20 " : " h-28"}`}
+        ${scrollPosition >= 100 ? "bg-background h-20" : "h-28"}`}
             >
                 <div
-                    className={`transition-all relative flex items-center justify-between w-full max-w-[110rem] duration-300
+                    className={`transition-all  relative flex items-center justify-between w-full max-w-[110rem] duration-300
          ${scrollPosition >= 100 ? " max-w-full" : " max-w-[110rem] mt-4"}`}
                 >
                     <Link id='logo' href='/'>
                         <Image width={150} src={TextLogo} alt='Braincards Logo' />
                     </Link>
-                    <nav className='absolute left-1/2 -translate-x-[50%] lg:block hidden'>
-                        <ul className='flex gap-16 '>
+                    <nav
+                        className={`absolute left-1/2 -translate-x-[50%] lg:block hidden bg-background px-10 py-3 rounded-full ${
+                            scrollPosition >= 100 ? "shadow-none" : "shadow-md"
+                        } `}
+                    >
+                        <ul className='flex gap-16 text-muted-foreground'>
                             {paths.map((path, index) => (
                                 <li className='text-base font-medium ' key={index}>
                                     <Link href={path.href}>{path.label}</Link>
@@ -75,7 +79,7 @@ function Navbar({ session }: { session: Session | null }) {
             <aside
                 className={` ${
                     sidebarOpen ? "translate-x-0" : "translate-x-[100%] "
-                } lg:hidden transition-all duration-300 fixed w-[100vw] h-full bg-white z-[99] p-10`}
+                } lg:hidden transition-all duration-300 fixed w-[100vw] h-full bg-background z-[99] p-10`}
             >
                 <Image
                     src={Cards}

@@ -13,7 +13,7 @@ function Hero() {
             <div id='herocontent' className='z-[3] flex flex-col items-center gap-3'>
                 <Badge
                     variant={"secondary"}
-                    className='lg:h-8 lg:text-sm mb-2 lg:mb-0 hover:bg-white text-muted-foreground/50 border-border shadow-md bg-white'
+                    className='lg:h-8 lg:text-sm mb-2 lg:mb-0 hover:bg-background text-muted-foreground/50 border-border shadow-md bg-background'
                 >
                     AI flashcards
                 </Badge>
@@ -34,7 +34,7 @@ function Hero() {
                 <div className='flex gap-6 mt-4 lg:mt-8'>
                     <Button
                         variant={"secondary"}
-                        className='bg-white rounded-full lg:px-7 lg:text-xl lg:py-6 border-[1px] text-muted-foreground/70 shadow-md'
+                        className='bg-background rounded-full lg:px-7 lg:text-xl lg:py-6 border-[1px] text-muted-foreground/70 shadow-md'
                     >
                         See more
                     </Button>

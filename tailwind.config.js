@@ -52,7 +52,9 @@ module.exports = {
                 },
                 braincards: {
                     DEFAULT: "hsl(var(--braincards))",
+                    light: "hsl(var(--braincards-light))",
                     dark: "hsl(var(--braincards-dark))",
+                    darker: "hsl(var(--braincards-darker))",
                 },
             },
 

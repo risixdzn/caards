@@ -37,7 +37,7 @@ const PlanCard = ({
             <span className='flex gap-3 items-center text-muted-foreground text-[0.925rem]'>
                 {feature.included ? (
                     <div className={"w-[1.15rem] h-[1.15rem] rounded-full bg-braincards"}>
-                        <Check className='scale-[0.6] text-white -translate-x-[0.14rem] -translate-y-[0.12rem]' />
+                        <Check className='scale-[0.6] text-background -translate-x-[0.14rem] -translate-y-[0.12rem]' />
                     </div>
                 ) : (
                     <div className={"w-[1.15rem] h-[1.15rem] rounded-full "}>
@@ -51,13 +51,13 @@ const PlanCard = ({
 
     return (
         <div
-            className={`relative bg-white py-6 px-8 w-80 rounded-lg border-border shadow-lg ${
+            className={`relative bg-background py-6 px-8 w-80 rounded-lg border-border shadow-lg ${
                 primary && "outline outline-4 outline-braincards border-[0px]"
             }`}
         >
             <Image src={Cards} width={60} alt='' className='w-10 lg:w-14' />
             {primary && (
-                <Badge className='absolute right-0 bg-braincards rounded-l-md rounded-r-none px-4 py-1 text-white font-semibold hover:bg-braincards'>
+                <Badge className='absolute right-0 bg-braincards rounded-l-md rounded-r-none px-4 py-1 text-background font-semibold hover:bg-braincards'>
                     BEST OFFER
                 </Badge>
             )}
@@ -87,7 +87,7 @@ const PlanCard = ({
             <Button
                 className={` mt-6 hover:bg-black/10 w-full bg-transparent border-muted-foreground border-2 text-muted-foreground ${
                     primary &&
-                    "bg-braincards border-braincards-dark border-2 text-white hover:bg-braincards-dark"
+                    "bg-braincards border-braincards-dark border-2 text-background hover:bg-braincards-dark"
                 }`}
             >
                 {cta}
@@ -108,7 +108,7 @@ const BillingCycleSelector = ({
     return (
         <div
             className={cn(
-                "relative bg-white shadow-md p-[0.4rem] rounded-full flex gap-4",
+                "relative bg-background shadow-md p-[0.4rem] rounded-full flex gap-4",
                 className
             )}
         >
@@ -116,7 +116,7 @@ const BillingCycleSelector = ({
                 <Button
                     onClick={() => setBillingCycle("monthly")}
                     className={`rounded-full w-28 px-8 bg-transparent hover:bg-transparent  ${
-                        billingCycle == "monthly" ? "text-white" : "text-muted-foreground"
+                        billingCycle == "monthly" ? "text-background" : "text-muted-foreground"
                     }`}
                 >
                     Monthly
@@ -124,7 +124,7 @@ const BillingCycleSelector = ({
                 <Button
                     onClick={() => setBillingCycle("yearly")}
                     className={`rounded-full w-28 px-8 bg-transparent  hover:bg-transparent ${
-                        billingCycle == "yearly" ? "text-white" : "text-muted-foreground"
+                        billingCycle == "yearly" ? "text-background" : "text-muted-foreground"
                     }`}
                 >
                     Yearly

@@ -79,7 +79,7 @@ export default function StudyingPossibilities() {
                     Unleash your memory across any theme
                 </h3>
             </div>
-            <div className='absolute w-full h-full  z-[4] bg-gradient-to-b from-transparent via-transparent to-white'></div>
+            <div className='absolute w-full h-full  z-[4] bg-gradient-to-b from-transparent via-transparent to-background'></div>
             <Image
                 className='absolute w-28 lg:w-72 bottom-10 left-1/2 -translate-x-1/2 z-[5]'
                 src={Logo}

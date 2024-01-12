@@ -17,7 +17,7 @@ const DifficultySelector = ({
     return (
         <div
             className={cn(
-                "relative bg-white shadow-md p-[0.4rem] rounded-full flex gap-4",
+                "relative bg-background shadow-md p-[0.4rem] rounded-full flex gap-4",
                 className
             )}
         >
@@ -25,7 +25,7 @@ const DifficultySelector = ({
                 <Button
                     onClick={() => setDifficulty(0)}
                     className={`rounded-full w-28 px-8 bg-transparent hover:bg-transparent  ${
-                        difficulty == 0 ? "text-white" : "text-muted-foreground"
+                        difficulty == 0 ? "text-background" : "text-muted-foreground"
                     }`}
                 >
                     Easy - 1h
@@ -33,7 +33,7 @@ const DifficultySelector = ({
                 <Button
                     onClick={() => setDifficulty(1)}
                     className={`rounded-full w-28 px-8 bg-transparent  hover:bg-transparent ${
-                        difficulty == 1 ? "text-white" : "text-muted-foreground"
+                        difficulty == 1 ? "text-background" : "text-muted-foreground"
                     }`}
                 >
                     Medium - 15m
