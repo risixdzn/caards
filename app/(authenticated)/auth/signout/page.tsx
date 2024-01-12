@@ -3,11 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { DoorOpen } from "lucide-react";
+import { DoorOpen, Loader2 } from "lucide-react";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Signout() {
+    const [loading, setLoading] = useState(false);
+
     const { data } = useQuery({
         queryKey: ["csrfToken"],
         queryFn: () => {
@@ -37,8 +40,14 @@ export default function Signout() {
                         Cancel
                     </Button>
                     <Button type='submit' variant={"braincards"}>
-                        Sign Out
-                        <LogOut className='inline-block ml-1 h-4 w-4' />
+                        {!loading ? (
+                            <>
+                                Sign out
+                                <LogOut className='inline-block ml-1 h-4 w-4' />
+                            </>
+                        ) : (
+                            <Loader2 className='h-4 w-4 animate-spin' />
+                        )}
                     </Button>
                 </div>
             </div>
