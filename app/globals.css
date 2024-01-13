@@ -28,8 +28,10 @@
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
 
+        --braincards-light: 325 88% 84%;
         --braincards: 324 80% 80%;
         --braincards-dark: 324 57% 73%;
+        --braincards-darker: 325 35% 60%;
 
         --border: 0 0% 89.8%;
         --input: 0 0% 89.8%;

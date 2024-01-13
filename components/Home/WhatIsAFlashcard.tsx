@@ -6,7 +6,7 @@ export default function WhatIsAFlashcard() {
         <section className='relative flex flex-col gap-5 items-center lg:items-start justify-center w-full py-0 lg:py-10 mt-4 '>
             <div
                 id='gradient_overlay'
-                className='hidden lg:block pointer-events-none absolute w-full h-full lg:h-[calc(100%+6rem)] xl:h-full z-[4] bg-gradient-to-b from-transparent via-transparent to-white'
+                className='hidden lg:block pointer-events-none absolute w-full h-full lg:h-[calc(100%+6rem)] xl:h-full z-[4] bg-gradient-to-b from-transparent via-transparent to-background'
             ></div>
             <div className='z-[5] py-10 lg:py-20 xl:py-28 p-0 lg:p-20 xl:p-28 flex flex-col gap-5 items-start'>
                 <h3 className='text-[1.25rem] lg:text-[1.5rem] xl:text-[2rem] font-semibold text-muted-foreground -mb-7 lg:-mb-8 xl:-mb-10'>
@@ -34,7 +34,7 @@ export default function WhatIsAFlashcard() {
             >
                 <div
                     id='blockoverlay'
-                    className='hidden lg:block w-full h-[calc(100%+1rem)] -translate-y-[1rem] bg-white absolute translate-x-[calc(100%)] z-[4]'
+                    className='hidden lg:block w-full h-[calc(100%+1rem)] -translate-y-[1rem] bg-background absolute translate-x-[calc(100%)] z-[4]'
                 ></div>
 
                 <div className='ml-1/2 lg:ml-0 lg:translate-x-0 h-auto w-full lg:w-auto flex items-center flex-col gap-4 '>
