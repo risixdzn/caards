@@ -12,6 +12,7 @@ import twitter from "@/public/twitter.svg";
 import github from "@/public/github.svg";
 import { CheckCircle, Loader2, MailCheck, XCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function Login({ verify }: { verify?: boolean }) {
     const [email, setEmail] = useState("");
@@ -26,6 +27,10 @@ export function Login({ verify }: { verify?: boolean }) {
     const handleEmailSignIn = () => {
         setLoading(true);
         signIn("email", { email });
+    };
+
+    const handleGoogleSignIn = () => {
+        signIn("google");
     };
 
     const searchParams = useSearchParams();
@@ -58,7 +63,8 @@ export function Login({ verify }: { verify?: boolean }) {
                 code: "Callback",
             },
             oauthaccountnotlinked: {
-                message: "The email used is linked with another account.",
+                message:
+                    "To confirm your identity, please sign in with the same account you used originally.",
                 code: "OAuthAccount",
             },
             emailsignin: {
@@ -160,16 +166,36 @@ export function Login({ verify }: { verify?: boolean }) {
                     </div>
                 </div>
 
-                <div id='providers' className='w-full  flex items-center gap-2'>
-                    <Button variant={"outline"} disabled={verify} className='w-full h-9 shadow-sm'>
-                        <Image src={google} alt='' className='h-4 w-4' />
-                    </Button>
-                    <Button variant={"outline"} disabled={verify} className='w-full h-9 shadow-sm'>
-                        <Image src={twitter} alt='' className='h-4 w-4' />
-                    </Button>
-                    <Button variant={"outline"} disabled={verify} className='w-full h-9 shadow-sm'>
-                        <Image src={github} alt='' className='h-4 w-4' />
-                    </Button>
+                <div id='providers' className='w-full flex items-center gap-2 flex-col'>
+                    <div className='w-full'>
+                        <Button
+                            variant={"outline"}
+                            disabled={verify}
+                            className='w-full h-9 shadow-sm text-muted-foreground'
+                            onClick={() => handleGoogleSignIn()}
+                        >
+                            <Image src={google} alt='' className='h-4 w-4 mr-2' />
+                            Google
+                        </Button>
+                    </div>
+                    <div className='flex w-full gap-2'>
+                        <Button
+                            variant={"outline"}
+                            disabled={verify}
+                            className='w-full h-9 shadow-sm text-muted-foreground'
+                        >
+                            <Image src={twitter} alt='' className='h-4 w-4 mr-2' />
+                            Twitter
+                        </Button>
+                        <Button
+                            variant={"outline"}
+                            disabled={verify}
+                            className='w-full h-9 shadow-sm text-muted-foreground'
+                        >
+                            <Image src={github} alt='' className='h-4 w-4 mr-2' />
+                            Github
+                        </Button>
+                    </div>
                 </div>
             </form>
 
@@ -177,10 +203,22 @@ export function Login({ verify }: { verify?: boolean }) {
                 {!error_code ? (
                     "New here? No worries! If you don't have an account, we'll create one for you!"
                 ) : (
-                    <span className='text-destructive'>
-                        <XCircle className='h-4 w-4 mr-1 inline-block' />
-                        {error.message}
-                    </span>
+                    <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <span className='text-destructive'>
+                                    <XCircle className='h-4 w-4 mr-1 inline-block' />
+                                    {error.message}
+                                </span>
+                            </TooltipTrigger>
+                            <TooltipContent
+                                className='border-destructive text-destructive'
+                                side='bottom'
+                            >
+                                Error code: <b>{error.code}</b>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
                 )}
             </p>
         </div>
