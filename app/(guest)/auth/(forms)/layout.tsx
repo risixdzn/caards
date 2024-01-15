@@ -4,6 +4,7 @@ import GlowBg from "@/public/Glows.webp";
 import Image from "next/image";
 import Cards from "@/public/Cards.svg";
 import { ActivityIcon, Blocks, Sparkle, Workflow, Zap } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Sign In",
@@ -64,7 +65,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
 
                     <Image src={GlowBg} alt='' className='absolute w-full h-full z-[1]' />
                 </div>
-                <div className='w-full lg:w-1/2 flex items-center justify-center px-4 relative bg-grid-login bg-center'>
+                <div className='w-full lg:w-1/2 flex items-center justify-center px-4 relative bg-center'>
                     {children}
                 </div>
             </div>
