@@ -26,6 +26,11 @@ model Account {
   session_state     String?
   createdAt         DateTime @default(now()) @map(name: "created_at")
   updatedAt         DateTime @default(now()) @map(name: "updated_at")
+  //github only
+  refresh_token_expires_in Int? 
+  //twitter only
+  oauth_token String? @db.Text
+  oauth_token_secret String? @db.Text
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   

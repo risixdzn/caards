@@ -3,6 +3,8 @@ import { DefaultSession, NextAuthOptions, getServerSession } from "next-auth";
 import { prisma } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+import TwitterProvider from "next-auth/providers/twitter";
 import Email from "next-auth/providers/email";
 
 declare module "next-auth" {
@@ -59,6 +61,14 @@ export const authOptions: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        }),
+        GitHubProvider({
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+        }),
+        TwitterProvider({
+            clientId: process.env.TWITTER_CLIENT_ID as string,
+            clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
         }),
         Email({
             server: {

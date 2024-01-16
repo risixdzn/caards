@@ -16,7 +16,12 @@ import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/
 
 export function Login({ verify }: { verify?: boolean }) {
     const [email, setEmail] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<{ [key: string]: boolean }>({
+        email: false,
+        google: false,
+        twitter: false,
+        github: false,
+    });
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -24,13 +29,29 @@ export function Login({ verify }: { verify?: boolean }) {
         return;
     };
 
-    const handleEmailSignIn = () => {
-        setLoading(true);
-        signIn("email", { email });
-    };
+    type SignInProps =
+        | { provider: "email"; email: string }
+        | { provider: "google" | "github" | "twitter" };
 
-    const handleGoogleSignIn = () => {
-        signIn("google");
+    const handleSignIn = (props: SignInProps) => {
+        setLoading((prevLoading) => ({
+            ...prevLoading,
+            [props.provider]: true,
+        }));
+
+        if (props.provider == "email") {
+            try {
+                signIn("email", { email });
+            } finally {
+                return;
+            }
+        }
+
+        try {
+            signIn(props.provider);
+        } finally {
+            return;
+        }
     };
 
     const searchParams = useSearchParams();
@@ -43,7 +64,7 @@ export function Login({ verify }: { verify?: boolean }) {
             oauthsignin: {
                 message:
                     "An unexpected error occurred while authorizing your login. Please try again.",
-                code: "OAuthCallback",
+                code: "OAuthSignIn",
             },
             oauthcallback: {
                 message: "An error occurred on the auth provider response. Please try again.",
@@ -140,10 +161,10 @@ export function Login({ verify }: { verify?: boolean }) {
                         type='submit'
                         variant={"braincards"}
                         className='w-full h-9'
-                        disabled={verify || loading}
-                        onClick={() => handleEmailSignIn()}
+                        disabled={verify || loading.email}
+                        onClick={() => handleSignIn({ provider: "email", email })}
                     >
-                        {!loading ? (
+                        {!loading.email ? (
                             !verify ? (
                                 "Sign in with magic link"
                             ) : (
@@ -170,29 +191,43 @@ export function Login({ verify }: { verify?: boolean }) {
                     <div className='w-full'>
                         <Button
                             variant={"outline"}
-                            disabled={verify}
+                            disabled={verify || loading.google}
                             className='w-full h-9 shadow-sm text-muted-foreground'
-                            onClick={() => handleGoogleSignIn()}
+                            onClick={() => handleSignIn({ provider: "google" })}
                         >
-                            <Image src={google} alt='' className='h-4 w-4 mr-2' />
+                            {!loading.google ? (
+                                <Image src={google} alt='' className='h-4 w-4 mr-2' />
+                            ) : (
+                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                            )}
                             Google
                         </Button>
                     </div>
                     <div className='flex w-full gap-2'>
                         <Button
                             variant={"outline"}
-                            disabled={verify}
+                            disabled={verify || loading.twitter}
                             className='w-full h-9 shadow-sm text-muted-foreground'
+                            onClick={() => handleSignIn({ provider: "twitter" })}
                         >
-                            <Image src={twitter} alt='' className='h-4 w-4 mr-2' />
+                            {!loading.twitter ? (
+                                <Image src={twitter} alt='' className='h-4 w-4 mr-2' />
+                            ) : (
+                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                            )}
                             Twitter
                         </Button>
                         <Button
                             variant={"outline"}
-                            disabled={verify}
+                            disabled={verify || loading.github}
                             className='w-full h-9 shadow-sm text-muted-foreground'
+                            onClick={() => handleSignIn({ provider: "github" })}
                         >
-                            <Image src={github} alt='' className='h-4 w-4 mr-2' />
+                            {!loading.github ? (
+                                <Image src={github} alt='' className='h-4 w-4 mr-2' />
+                            ) : (
+                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                            )}
                             Github
                         </Button>
                     </div>
