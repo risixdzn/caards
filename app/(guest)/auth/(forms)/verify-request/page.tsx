@@ -9,6 +9,6 @@ export default async function VerifyRequest() {
     if (!session) {
         return <Login verify />;
     } else {
-        redirect("/account");
+        redirect("/dashboard/account");
     }
 }

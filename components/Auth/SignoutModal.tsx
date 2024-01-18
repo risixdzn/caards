@@ -75,7 +75,7 @@ export default function SignoutModal() {
                         </DialogTitle>
                         <DialogDescription>You&apos;ll be logged out shortly.</DialogDescription>
                     </DialogHeader>
-                    <DialogFooter>
+                    <DialogFooter className='sm:mt-4'>
                         <Button
                             onClick={() => openChangeModal(false)}
                             variant={"ghost"}
