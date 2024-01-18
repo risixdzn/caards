@@ -5,7 +5,7 @@ import Cards from "@/public/Cards.svg";
 
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import google from "@/public/google.svg";
 import twitter from "@/public/twitter.svg";
@@ -13,6 +13,7 @@ import github from "@/public/github.svg";
 import { CheckCircle, Loader2, MailCheck, XCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { useToast } from "../ui/use-toast";
 
 export function Login({ verify }: { verify?: boolean }) {
     const [email, setEmail] = useState("");
@@ -110,6 +111,18 @@ export function Login({ verify }: { verify?: boolean }) {
     };
 
     const error = renderError(error_code as string);
+
+    const deleted = searchParams.get("deleted")?.toLowerCase();
+    const { toast } = useToast();
+
+    useEffect(() => {
+        if (deleted) {
+            toast({
+                title: "Account deleted.",
+                description: "Your account was deleted successfully. We hope to see you soon!",
+            });
+        }
+    }, [deleted, toast]);
 
     return (
         <div className='flex items-center flex-col w-[350px] space-y-6'>

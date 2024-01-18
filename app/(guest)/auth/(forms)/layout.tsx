@@ -5,6 +5,10 @@ import Image from "next/image";
 import Cards from "@/public/Cards.svg";
 import { ActivityIcon, Blocks, Sparkle, Workflow, Zap } from "lucide-react";
 import Link from "next/link";
+import { Toaster } from "@/components/ui/toaster";
+import { Figtree } from "next/font/google";
+
+const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Sign In",
@@ -17,6 +21,7 @@ export const metadata: Metadata = {
 export default async function AuthLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className='p-5'>
+            <Toaster />
             <div className='flex w-full min-h-[calc(100vh-(1.25rem*2))] rounded-lg border-border border-[1px] items-center justify-center'>
                 <div className='hidden lg:flex items-center justify-center lg:w-1/2 h-[calc(100vh-(1.25rem*2))] bg-neutral-100 relative'>
                     <div className='z-[3] space-y-6'>

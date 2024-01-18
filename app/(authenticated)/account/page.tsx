@@ -2,6 +2,7 @@ import { getAuthSession } from "@/lib/auth";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import DeleteAccount from "@/components/Auth/DeleteAccount";
 
 export default async function Account() {
     const session = await getAuthSession();
@@ -18,6 +19,8 @@ export default async function Account() {
                 <li>ID: {session?.user?.id}</li>
                 <li>Name: {session?.user?.name}</li>
             </ul>
+            <DeleteAccount />
+
             <Link href='/auth/signout'>
                 <Button>Sign Out</Button>
             </Link>
