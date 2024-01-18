@@ -9,6 +9,6 @@ export default async function LoginPage() {
     if (!session) {
         return <Login />;
     } else {
-        redirect("/account");
+        redirect("/dashboard/account");
     }
 }

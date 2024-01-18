@@ -7,7 +7,7 @@ export default function LoginBtn({ session }: { session: Session | null }) {
         if (!session) {
             return "/auth/signin";
         }
-        return "/account";
+        return "/dashboard/account";
     };
 
     return (
