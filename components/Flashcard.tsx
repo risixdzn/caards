@@ -1,17 +1,5 @@
-// type Flashcard = {
-//     front: string;
-//     back: string;
-// };
-
-// function Flashcard({ front, back }: Flashcard) {
-//     return <div className='w-96 h-52 bg-red-700 rounded-xl'></div>;
-// }
-
-// export default Flashcard;
-
 "use client";
 
-import type { ComponentType, MouseEventHandler } from "react";
 import { motion, useSpring } from "framer-motion";
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -142,7 +130,7 @@ export default function Flashcard({
                             backfaceVisibility: "hidden",
                             position: "absolute",
                             background: `linear-gradient(90deg, #ffffff 0%, #ffffff 50%, ${
-                                color ? color : "#FFB4E1"
+                                color ? color : "#e5e5e5"
                             } 100%)`,
                         }}
                     >
@@ -158,7 +146,7 @@ export default function Flashcard({
                                 className={`w-full h-full rounded-xl `}
                                 style={{
                                     background: `linear-gradient(270deg, rgba(255,255,255,0) 0%,  ${
-                                        color ? color : "#FFB4E1"
+                                        color ? color : "#fde047"
                                     } 100%)`,
                                 }}
                             ></div>
@@ -182,7 +170,7 @@ export default function Flashcard({
                             position: "absolute",
 
                             background: `radial-gradient(at left top, rgb(255, 255, 255), rgb(255, 255, 255), ${
-                                color ? color : "#FFB4E1"
+                                color ? color : "#fde047"
                             })`,
                         }}
                     >

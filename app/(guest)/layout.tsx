@@ -9,10 +9,10 @@ import { getAuthSession } from "@/lib/auth";
 const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Braincards",
+    title: "Caards",
     description: "Study with ease by creating flashcards with the power of AI.",
     icons: {
-        icon: "../BrainCards-Logo-RECOLOR.svg",
+        icon: "../Caards-Logo-RECOLOR.svg",
     },
 };
 

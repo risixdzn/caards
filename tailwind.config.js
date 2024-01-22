@@ -50,11 +50,11 @@ module.exports = {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
-                braincards: {
-                    DEFAULT: "hsl(var(--braincards))",
-                    light: "hsl(var(--braincards-light))",
-                    dark: "hsl(var(--braincards-dark))",
-                    darker: "hsl(var(--braincards-darker))",
+                caards: {
+                    DEFAULT: "hsl(var(--caards))",
+                    light: "hsl(var(--caards-light))",
+                    dark: "hsl(var(--caards-dark))",
+                    darker: "hsl(var(--caards-darker))",
                 },
             },
 
@@ -88,9 +88,13 @@ module.exports = {
             backgroundImage: {
                 "hero-pattern": "url(../public/square-pattern-64px.svg)",
                 "hero-pattern2px": "url(../public/square-pattern-64px-2pxb.svg)",
+                "hero-glows": "url(../public/Hero_Glows.webp)",
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+            },
+            fontFamily: {
+                heading: "'CalSans', sans-serif",
             },
         },
     },

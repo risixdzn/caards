@@ -28,7 +28,7 @@ const DifficultySelector = ({
                         difficulty == 0 ? "text-background" : "text-muted-foreground"
                     }`}
                 >
-                    Easy - 1h
+                    Easy&nbsp;-&nbsp;1h
                 </Button>
                 <Button
                     onClick={() => setDifficulty(1)}
@@ -36,7 +36,7 @@ const DifficultySelector = ({
                         difficulty == 1 ? "text-background" : "text-muted-foreground"
                     }`}
                 >
-                    Medium - 15m
+                    Medium&nbsp;-&nbsp;15m
                 </Button>
                 <Button
                     onClick={() => setDifficulty(2)}
@@ -44,7 +44,7 @@ const DifficultySelector = ({
                         difficulty == 2 ? "text-white" : "text-muted-foreground"
                     }`}
                 >
-                    Hard - 2m
+                    Hard&nbsp;-&nbsp;2m
                 </Button>
             </div>
             <div
@@ -105,11 +105,11 @@ export default function Remember() {
 
     return (
         <section className='w-full h-auto py-40 flex flex-col items-center gap-2 lg:gap-6'>
-            <h2 className='text-4xl lg:text-6xl font-semibold text-center flex items-center gap-4 lg:gap-8'>
+            <h2 className='text-4xl lg:text-6xl font-semibold text-center flex items-center lg:-mb-3 gap-4 lg:gap-8 font-heading '>
                 Found the card question hard?
             </h2>
             <h3 className='text-xl lg:text-4xl  text-muted-foreground/70 font-semibold text-center'>
-                Braincards will make you review it later.
+                Caards will make you review it later.
             </h3>
             <div className='mt-14 flex flex-col items-center gap-6 px-2'>
                 <h3 className='text-2xl lg:text-5xl text-muted-foreground font-semibold text-center'>

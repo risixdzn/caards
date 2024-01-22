@@ -1,6 +1,6 @@
-# BrainCards
+# Caards
 
-Welcome to BrainCards, an AI-powered flashcard application built with Next.js, Prisma, and NextAuth. Study with ease by creating flashcards with the power of AI.
+Welcome to Caards, an AI-powered flashcard application built with Next.js, Prisma, and NextAuth. Study with ease by creating flashcards with the power of AI.
 
 ## Features
 
@@ -31,13 +31,13 @@ Welcome to BrainCards, an AI-powered flashcard application built with Next.js, P
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/braincards-web-app.git
+    git clone https://github.com/your-username/caards-web-app.git
     ```
 
 2. Install dependencies:
 
     ```bash
-    cd braincards-web-app
+    cd caards-web-app
     npm install
     ```
 
@@ -66,4 +66,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Happy studying with BrainCards! 🧠🔗
+Happy studying with Caards! 🧠🔗

@@ -36,7 +36,7 @@ const PlanCard = ({
         return (
             <span className='flex gap-3 items-center text-muted-foreground text-[0.925rem]'>
                 {feature.included ? (
-                    <div className={"w-[1.15rem] h-[1.15rem] rounded-full bg-braincards"}>
+                    <div className={"w-[1.15rem] h-[1.15rem] rounded-full bg-caards"}>
                         <Check className='scale-[0.6] text-background -translate-x-[0.14rem] -translate-y-[0.12rem]' />
                     </div>
                 ) : (
@@ -52,12 +52,12 @@ const PlanCard = ({
     return (
         <div
             className={`relative bg-background py-6 px-8 w-80 rounded-lg border-border shadow-lg ${
-                primary && "outline outline-4 outline-braincards border-[0px]"
+                primary && "outline outline-4 outline-caards border-[0px]"
             }`}
         >
             <Image src={Cards} width={60} alt='' className='w-10 lg:w-14' />
             {primary && (
-                <Badge className='absolute right-0 bg-braincards rounded-l-md rounded-r-none px-4 py-1 text-background font-semibold hover:bg-braincards'>
+                <Badge className='absolute right-0 bg-caards rounded-l-md rounded-r-none px-4 py-1 text-background font-semibold hover:bg-caards'>
                     BEST OFFER
                 </Badge>
             )}
@@ -87,7 +87,7 @@ const PlanCard = ({
             <Button
                 className={` mt-6 hover:bg-black/10 w-full bg-transparent border-muted-foreground border-2 text-muted-foreground ${
                     primary &&
-                    "bg-braincards border-braincards-dark border-2 text-background hover:bg-braincards-dark"
+                    "bg-caards border-caards-dark border-2 text-background hover:bg-caards-dark"
                 }`}
             >
                 {cta}
@@ -131,7 +131,7 @@ const BillingCycleSelector = ({
                 </Button>
             </div>
             <div
-                className={`transition-all absolute bg-braincards w-28 h-10 rounded-full ${
+                className={`transition-all absolute bg-caards w-28 h-10 rounded-full ${
                     billingCycle == "yearly" && "translate-x-[calc(100%+1rem)]"
                 }`}
             ></div>
@@ -162,12 +162,12 @@ export default function Pricing() {
     return (
         <section
             id='pricing'
-            className='w-full py-20 rounded-lg border-border border-[1px] relative overflow-clip flex items-center justify-center bg-gradient-to-br from-braincards via-background to-braincards'
+            className='w-full py-20 rounded-lg border-border border-[1px] relative overflow-clip flex items-center justify-center bg-gradient-to-br from-neutral-200 via-background to-neutral-200'
         >
             <div id='content' className='z-[4] flex items-center flex-col gap-2 lg:gap-4'>
                 <Image src={Cards} width={60} alt='' className='w-10 lg:w-16' />
-                <h2 className='text-center text-4xl lg:text-6xl tracking-tight'>
-                    All this, in <b className='font-semibold'>one plan</b>.
+                <h2 className='text-center text-4xl lg:text-6xl tracking-tight '>
+                    All this, in <b className='font-semibold font-heading'>one plan</b>.
                 </h2>
                 <h3 className='text-xl lg:text-2xl max-w-lg text-center text-muted-foreground'>
                     Unlock boundless creativity at the <br className='lg:block hidden'></br>
@@ -199,11 +199,11 @@ export default function Pricing() {
             </div>
             <div
                 id='bg-rounded-center-gradient'
-                className='z-[2] blur-[120px] lg:blur-[200px] w-[28rem] h-[28rem] lg:w-[42rem] lg:h-[42rem] bg-braincards rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+                className='z-[2] blur-[120px] lg:blur-[200px] w-[28rem] h-[28rem] lg:w-[42rem] lg:h-[42rem] bg-caards rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
             ></div>
             <div
                 id='squarespattern'
-                className='absolute w-full h-full bg-hero-pattern bg-center lg:bg-auto bg-[length:48px] z-[1]'
+                className='absolute w-full h-full bg-hero-pattern2px bg-center lg:bg-auto bg-[length:48px] z-[1]'
             ></div>
         </section>
     );

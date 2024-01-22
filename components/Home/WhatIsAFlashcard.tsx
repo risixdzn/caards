@@ -12,7 +12,7 @@ export default function WhatIsAFlashcard() {
                 <h3 className='text-[1.25rem] lg:text-[1.5rem] xl:text-[2rem] font-semibold text-muted-foreground -mb-7 lg:-mb-8 xl:-mb-10'>
                     But first...
                 </h3>
-                <h2 className='text-[2rem] md:text-[2.5rem] lg:text-[3rem] xl:text-[4rem] 2xl:text-[5rem] font-semibold tracking-tight'>
+                <h2 className='text-[2rem] md:text-[2.5rem] lg:text-[3rem] xl:text-[4rem] 2xl:text-[5rem] font-semibold font-heading'>
                     What is a flashcard?
                 </h2>
                 <p className='text-muted-foreground text-md  md:text-lg xl:text-2xl max-w-md lg:max-w-sm xl:max-w-md '>
@@ -43,18 +43,18 @@ export default function WhatIsAFlashcard() {
                             width={30}
                             height={16}
                             className='w-full max-w-sm lg:max-w-none h-48 text-lg md:flex lg:hidden xl:flex 2xl:w-[30rem] 2xl:h-[16rem] '
-                            front={"What historic event occurred on July 20, 1969?"}
+                            front={"How many bones are there in the adult human body?"}
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                "The adult human body typically has 206 bones. However, this number can vary slightly from person to person."
                             }
                         />
                         <Flashcard
                             width={30}
                             height={16}
                             className='w-full max-w-sm lg:max-w-none h-48 text-lg lg:translate-x-full xl:translate-x-0 2xl:w-[30rem] 2xl:h-[16rem] '
-                            front={"What historic event occurred on July 20, 1969?"}
+                            front={"Who is credited with inventing the telephone?"}
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                "Alexander Graham Bell is credited with inventing the telephone in 1876."
                             }
                         />
                     </div>
@@ -63,9 +63,11 @@ export default function WhatIsAFlashcard() {
                             width={30}
                             height={16}
                             className='text-lg lg:translate-x-1/2 lg:flex xl:hidden 2xl:flex 2xl:translate-x-0'
-                            front={"What historic event occurred on July 20, 1969?"}
+                            front={
+                                'Which artist is known for his melting clocks in the painting "The Persistence of Memory"'
+                            }
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                'Salvador Dalí is the artist known for his surreal masterpiece "The Persistence of Memory," featuring melting clocks, created in 1931.'
                             }
                         />
                         <Flashcard
@@ -74,7 +76,7 @@ export default function WhatIsAFlashcard() {
                             className=' text-lg flex 2xl:flex translate-x-0 lg:translate-x-1/2 xl:translate-x-3/4 2xl:translate-x-0'
                             front={"What historic event occurred on July 20, 1969?"}
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                "The space flight, the lunar landing, and the crew's safe return to earth."
                             }
                         />
                     </div>
@@ -83,18 +85,20 @@ export default function WhatIsAFlashcard() {
                             width={30}
                             height={16}
                             className='text-lg'
-                            front={"What historic event occurred on July 20, 1969?"}
+                            front={"Who discovered penicillin, the first widely used antibiotic?"}
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                "Sir Alexander Fleming discovered penicillin in 1928, revolutionizing medicine by introducing the first antibiotic."
                             }
                         />
                         <Flashcard
                             width={30}
                             height={16}
                             className='text-lg '
-                            front={"What historic event occurred on July 20, 1969?"}
+                            front={
+                                "What medical technology, developed in the 1970s, provides detailed images of the body's internal structures?"
+                            }
                             back={
-                                "The space flight, the lunar landing, and the crew's safe return to earth"
+                                "The CT (Computed Tomography) scan, developed in the 1970s, uses X-rays to create detailed cross-sectional images of the body's internal structures."
                             }
                         />
                     </div>

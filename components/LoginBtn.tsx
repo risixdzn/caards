@@ -12,7 +12,7 @@ export default function LoginBtn({ session }: { session: Session | null }) {
 
     return (
         <Link href={href()}>
-            <Button variant={"braincards"}>{session ? "Account" : "Sign In"}</Button>
+            <Button>{session ? "Account" : "Sign In"}</Button>
         </Link>
     );
 }

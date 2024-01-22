@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Dashboard",
     description: "Study with ease by creating flashcards with the power of AI.",
     icons: {
-        icon: "../BrainCards-Logo-RECOLOR.svg",
+        icon: "../Caards-Logo-RECOLOR.svg",
     },
 };
 
