@@ -38,7 +38,7 @@ export default function Workflow() {
             id='overview'
             className='w-full h-auto py-28 flex flex-col items-center gap-2 lg:gap-6'
         >
-            <h2 className='text-4xl  lg:text-6xl font-semibold flex items-center gap-4 lg:gap-8'>
+            <h2 className='text-4xl  lg:text-6xl font-semibold flex items-center gap-4 lg:gap-8 font-heading'>
                 <Wind className='inline-block scale-[1.5] lg:scale-[3]' />
                 Study with ease.
             </h2>
@@ -64,7 +64,7 @@ export default function Workflow() {
                 >
                     <WorkflowStep
                         number={2}
-                        title={"Ask braincards"}
+                        title={"Ask caards"}
                         description={"Let the app do the *magic*"}
                     />
                 </motion.div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BrainCardsLogo from "@/public/BrainCards_TextLogo_Light.svg";
+import CaardsLogo from "@/public/Caards_TextLogo_Light.svg";
 import Hero from "@/components/Home/Hero";
 import WhatIsAFlashcard from "@/components/Home/WhatIsAFlashcard";
 import StudyingPossibilities from "@/components/Home/StudyingPossibilities";

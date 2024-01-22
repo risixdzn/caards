@@ -5,7 +5,7 @@ import Outer from "../../public/Possibilities-Outer.svg";
 import Middle from "../../public/Possibilities-Middle.svg";
 import Inner from "../../public/Possibilities-Inner.svg";
 import Cards from "../../public/Cards.svg";
-import Logo from "../../public/BrainCards-Logo-RECOLOR.svg";
+import Logo from "@/public/svg/Caards_Logo.svg";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useGetScreenWidth } from "@/lib/hooks/useGetScreenWidth";

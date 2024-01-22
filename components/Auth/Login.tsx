@@ -137,7 +137,7 @@ export function Login({ verify }: { verify?: boolean }) {
                     </>
                 ) : (
                     <>
-                        <MailCheck className='w-10 h-10 text-braincards' />
+                        <MailCheck className='w-10 h-10 text-caards' />
                         <h1 className='text-2xl font-semibold tracking-tight'>Sign in </h1>
                         <p className='text-sm text-muted-foreground'>
                             All right! You are almost in.
@@ -172,7 +172,6 @@ export function Login({ verify }: { verify?: boolean }) {
                     )}
                     <Button
                         type='submit'
-                        variant={"braincards"}
                         className='w-full h-9'
                         disabled={verify || loading.email}
                         onClick={() => handleSignIn({ provider: "email", email })}

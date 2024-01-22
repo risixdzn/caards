@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import TextLogo from "@/public/BrainCards-TextLogo-Light-RECOLOR.svg";
+import TextLogo from "@/public/svg/Caards_TextLogo.svg";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -52,7 +52,12 @@ function Navbar({ session }: { session: Session | null }) {
          ${scrollPosition >= 100 ? " max-w-full" : " max-w-[110rem] mt-4"}`}
                 >
                     <Link id='logo' href='/'>
-                        <Image width={150} src={TextLogo} alt='Braincards Logo' />
+                        <Image
+                            width={100}
+                            className='ml-3 lg:ml-0'
+                            src={TextLogo}
+                            alt='Caards Logo'
+                        />
                     </Link>
                     <nav
                         className={`absolute left-1/2 -translate-x-[50%] lg:block hidden bg-background px-10 py-3 rounded-full ${
@@ -110,9 +115,7 @@ function Navbar({ session }: { session: Session | null }) {
                     id='bottom'
                     className='flex items-center justify-end w-[calc(100%-5rem)] -translate-y-[2.5rem] h-10 absolute bottom-0'
                 >
-                    <Button className=' bg-braincards rounded-full h-8 lg:px-5 lg:text-base border-[1px] border-braincards-dark hover:bg-braincards-dark'>
-                        Sign Up
-                    </Button>
+                    <Button className='h-8 lg:px-5 lg:text-base'>Sign Up</Button>
                 </div>
             </aside>
         </>

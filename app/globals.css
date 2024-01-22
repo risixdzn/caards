@@ -28,10 +28,10 @@
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
 
-        --braincards-light: 325 88% 84%;
-        --braincards: 324 80% 80%;
-        --braincards-dark: 324 57% 73%;
-        --braincards-darker: 325 35% 60%;
+        --caards-light: 50 98% 64%;
+        --caards: 48 96% 53%;
+        --caards-dark: 45 93% 47%;
+        --caards-darker: 41 96% 40%;
 
         --border: 0 0% 89.8%;
         --input: 0 0% 89.8%;
@@ -72,6 +72,13 @@
 }
 
 @layer base {
+    @font-face {
+        font-family: "CalSans";
+        src: url("../public/CalSans-SemiBold.ttf") format("ttf"),
+            url("../public/CalSans-SemiBold.woff") format("woff"),
+            url("../public/CalSans-SemiBold.woff2") format("woff2");
+    }
+
     * {
         @apply border-border;
     }

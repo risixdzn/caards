@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Sign In",
     description: "Study with ease by creating flashcards with the power of AI.",
     icons: {
-        icon: "../BrainCards-Logo-RECOLOR.svg",
+        icon: "../Caards-Logo-RECOLOR.svg",
     },
 };
 
@@ -38,7 +38,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
                             with one click.
                         </h1>
                         <p id='desc' className='text-muted-foreground text-lg max-w-md'>
-                            Join braincards and unleash your <b>full</b> studying potential with{" "}
+                            Join caards and unleash your <b>full</b> studying potential with{" "}
                             <b>AI powered</b> flashcard creation.
                         </p>
                         <div
@@ -47,19 +47,19 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
                         >
                             <div
                                 id='circle'
-                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-braincards-light rounded-full z-[4]'
+                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-caards-light rounded-full z-[4]'
                             ></div>
                             <div
                                 id='circle'
-                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-braincards rounded-full z-[3] -translate-x-1/2'
+                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-caards rounded-full z-[3] -translate-x-1/2'
                             ></div>
                             <div
                                 id='circle'
-                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-braincards-dark rounded-full z-[2] -translate-x-[100%]'
+                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-caards-dark rounded-full z-[2] -translate-x-[100%]'
                             ></div>
                             <div
                                 id='circle'
-                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-braincards-darker rounded-full z-[1] -translate-x-[150%]'
+                                className='w-14 h-14 border-[3px] border-background shadow-lg bg-caards-darker rounded-full z-[1] -translate-x-[150%]'
                             ></div>
                         </div>
                     </div>

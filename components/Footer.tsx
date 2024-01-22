@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import TextLogo from "@/public/BrainCards-TextLogo-Light-RECOLOR.svg";
+import TextLogo from "@/public/svg/Caards_TextLogo.svg";
 
 export default function Footer() {
     const year = new Date().getFullYear();
@@ -12,7 +12,7 @@ export default function Footer() {
                         href='/'
                         className='flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse'
                     >
-                        <Image src={TextLogo} className='h-12' alt='Braincards Logo' />
+                        <Image src={TextLogo} className='h-10' width={100} alt='Caards Logo' />
                     </Link>
                     <ul className='flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400'>
                         <li>
@@ -47,7 +47,7 @@ export default function Footer() {
                 <span className='block text-sm text-muted-foreground sm:text-center '>
                     © {year}{" "}
                     <Link href='/' className='hover:underline'>
-                        Braincards™
+                        Caards™
                     </Link>
                     . All Rights Reserved.
                 </span>

@@ -39,7 +39,7 @@ export default function Signout() {
                     <Button type='button' variant={"ghost"} onClick={() => cancel()}>
                         Cancel
                     </Button>
-                    <Button type='submit' variant={"braincards"}>
+                    <Button type='submit' variant={"caards"}>
                         {!loading ? (
                             <>
                                 Sign out
