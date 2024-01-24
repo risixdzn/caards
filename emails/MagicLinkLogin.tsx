@@ -17,8 +17,8 @@ interface LoginCodeEmailProps {
     url: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+const baseUrl = process.env.NEXTAUTH_URL
+    ? `https://${process.env.NEXTAUTH_URL}`
     : "http://localhost:3000";
 
 export const MagicLinkLogin = ({ url }: LoginCodeEmailProps) => (
