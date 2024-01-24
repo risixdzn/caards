@@ -2,18 +2,24 @@
 
 import Image from "next/image";
 import Cards from "@/public/Cards.svg";
-
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { ChangeEvent, useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
 import google from "@/public/google.svg";
 import twitter from "@/public/twitter.svg";
 import github from "@/public/github.svg";
 import { CheckCircle, Loader2, MailCheck, XCircle } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+
+import { ChangeEvent, useEffect, useState } from "react";
+
+import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 export function Login({ verify }: { verify?: boolean }) {
     const [email, setEmail] = useState("");
@@ -34,6 +40,27 @@ export function Login({ verify }: { verify?: boolean }) {
         | { provider: "email"; email: string }
         | { provider: "google" | "github" | "twitter" };
 
+    const formSchema = z.object({
+        email: z
+            .string()
+            .email({ message: "This is not an email" })
+            .min(1, { message: "Fill your email to receive the magic link." })
+            .refine((x) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(x), {
+                message: "This is not an email",
+            }),
+    });
+
+    const magiclinkform = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        mode: "all",
+        defaultValues: {
+            email: "",
+        },
+    });
+
+    const { formState, watch } = magiclinkform;
+    const { isValid } = formState;
+
     const handleSignIn = (props: SignInProps) => {
         setLoading((prevLoading) => ({
             ...prevLoading,
@@ -42,7 +69,7 @@ export function Login({ verify }: { verify?: boolean }) {
 
         if (props.provider == "email") {
             try {
-                signIn("email", { email });
+                signIn("email", { email: watch("email") });
             } finally {
                 return;
             }
@@ -160,91 +187,103 @@ export function Login({ verify }: { verify?: boolean }) {
                 </>
             )}
 
-            <form onSubmit={(e) => e.preventDefault()} className='w-full space-y-6'>
-                <div id='actions' className='w-full space-y-2'>
-                    {!verify && (
-                        <Input
-                            type='email'
-                            placeholder='name@example.com'
-                            className='h-9'
-                            onChange={(event) => handleInputChange(event)}
-                        ></Input>
-                    )}
-                    <Button
-                        type='submit'
-                        className='w-full h-9'
-                        disabled={verify || loading.email}
-                        onClick={() => handleSignIn({ provider: "email", email })}
-                    >
-                        {!loading.email ? (
-                            !verify ? (
-                                "Sign in with magic link"
-                            ) : (
-                                <CheckCircle />
-                            )
-                        ) : (
-                            <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+            <Form {...magiclinkform}>
+                <form onSubmit={(e) => e.preventDefault()} className='w-full space-y-6'>
+                    <div id='actions' className='w-full space-y-2'>
+                        {!verify && (
+                            <FormField
+                                control={magiclinkform.control}
+                                name='email'
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                type='email'
+                                                {...field}
+                                                placeholder='name@example.com'
+                                                className='h-9'
+                                            ></Input>
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
                         )}
-                    </Button>
-                </div>
+                        <Button
+                            type='submit'
+                            className='w-full h-9'
+                            disabled={verify || loading.email || !isValid}
+                            onClick={() => handleSignIn({ provider: "email", email })}
+                        >
+                            {!loading.email ? (
+                                !verify ? (
+                                    "Sign in with magic link"
+                                ) : (
+                                    <CheckCircle />
+                                )
+                            ) : (
+                                <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                            )}
+                        </Button>
+                    </div>
 
-                <div className='relative w-full'>
-                    <div className='absolute inset-0 flex items-center'>
-                        <span className='w-full border-t' />
+                    <div className='relative w-full'>
+                        <div className='absolute inset-0 flex items-center'>
+                            <span className='w-full border-t' />
+                        </div>
+                        <div className='relative flex justify-center text-xs uppercase'>
+                            <span className='bg-background px-2 text-muted-foreground '>
+                                Or continue with
+                            </span>
+                        </div>
                     </div>
-                    <div className='relative flex justify-center text-xs uppercase'>
-                        <span className='bg-background px-2 text-muted-foreground '>
-                            Or continue with
-                        </span>
-                    </div>
-                </div>
 
-                <div id='providers' className='w-full flex items-center gap-2 flex-col'>
-                    <div className='w-full'>
-                        <Button
-                            variant={"outline"}
-                            disabled={verify || loading.google}
-                            className='w-full h-9 shadow-sm text-muted-foreground'
-                            onClick={() => handleSignIn({ provider: "google" })}
-                        >
-                            {!loading.google ? (
-                                <Image src={google} alt='' className='h-4 w-4 mr-2' />
-                            ) : (
-                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                            )}
-                            Google
-                        </Button>
+                    <div id='providers' className='w-full flex items-center gap-2 flex-col'>
+                        <div className='w-full'>
+                            <Button
+                                variant={"outline"}
+                                disabled={verify || loading.google}
+                                className='w-full h-9 shadow-sm text-muted-foreground'
+                                onClick={() => handleSignIn({ provider: "google" })}
+                            >
+                                {!loading.google ? (
+                                    <Image src={google} alt='' className='h-4 w-4 mr-2' />
+                                ) : (
+                                    <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                                )}
+                                Google
+                            </Button>
+                        </div>
+                        <div className='flex w-full gap-2'>
+                            <Button
+                                variant={"outline"}
+                                disabled={verify || loading.twitter}
+                                className='w-full h-9 shadow-sm text-muted-foreground'
+                                onClick={() => handleSignIn({ provider: "twitter" })}
+                            >
+                                {!loading.twitter ? (
+                                    <Image src={twitter} alt='' className='h-4 w-4 mr-2' />
+                                ) : (
+                                    <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                                )}
+                                Twitter
+                            </Button>
+                            <Button
+                                variant={"outline"}
+                                disabled={verify || loading.github}
+                                className='w-full h-9 shadow-sm text-muted-foreground'
+                                onClick={() => handleSignIn({ provider: "github" })}
+                            >
+                                {!loading.github ? (
+                                    <Image src={github} alt='' className='h-4 w-4 mr-2' />
+                                ) : (
+                                    <Loader2 className='h-4 w-4 mr-2 animate-spin' />
+                                )}
+                                Github
+                            </Button>
+                        </div>
                     </div>
-                    <div className='flex w-full gap-2'>
-                        <Button
-                            variant={"outline"}
-                            disabled={verify || loading.twitter}
-                            className='w-full h-9 shadow-sm text-muted-foreground'
-                            onClick={() => handleSignIn({ provider: "twitter" })}
-                        >
-                            {!loading.twitter ? (
-                                <Image src={twitter} alt='' className='h-4 w-4 mr-2' />
-                            ) : (
-                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                            )}
-                            Twitter
-                        </Button>
-                        <Button
-                            variant={"outline"}
-                            disabled={verify || loading.github}
-                            className='w-full h-9 shadow-sm text-muted-foreground'
-                            onClick={() => handleSignIn({ provider: "github" })}
-                        >
-                            {!loading.github ? (
-                                <Image src={github} alt='' className='h-4 w-4 mr-2' />
-                            ) : (
-                                <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                            )}
-                            Github
-                        </Button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </Form>
 
             <p className='px-8 text-center text-sm text-muted-foreground'>
                 {!error_code ? (

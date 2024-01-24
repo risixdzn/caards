@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import TwitterProvider from "next-auth/providers/twitter";
 import Email from "next-auth/providers/email";
+import { sendVerificationRequest } from "@/emails/request";
 
 declare module "next-auth" {
     interface Session extends DefaultSession {
@@ -80,6 +81,7 @@ export const authOptions: NextAuthOptions = {
                 },
             },
             from: process.env.EMAIL_FROM,
+            sendVerificationRequest,
         }),
     ],
     pages: {
