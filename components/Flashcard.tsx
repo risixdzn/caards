@@ -146,7 +146,7 @@ export default function Flashcard({
                                 className={`w-full h-full rounded-xl `}
                                 style={{
                                     background: `linear-gradient(270deg, rgba(255,255,255,0) 0%,  ${
-                                        color ? color : "#fde047"
+                                        color ? color : "#facc15"
                                     } 100%)`,
                                 }}
                             ></div>

@@ -102,12 +102,12 @@
     ::-moz-selection {
         /* Code for Firefox */
         color: white;
-        background: #f5a3d4;
+        background: #facc1594;
     }
 
     ::selection {
         color: white;
-        background: #f5a3d4;
+        background: #facc1594;
     }
 
     .clickanim {
