@@ -6,7 +6,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         h1: ({ children }) => (
             <>
                 {" "}
-                <h1 style={{ fontSize: "3rem" }} className='font-semibold tracking-tight'>
+                <h1 style={{ fontSize: "3rem" }} className='font-semibold font-heading '>
                     {children}
                 </h1>
             </>
@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         h3: ({ children }) => (
             <h1
                 style={{ fontSize: "1.75rem", padding: "10px 0 10px 0" }}
-                className='font-semibold tracking-tight'
+                className='font-semibold tracking-tight text-heading'
             >
                 {children}
             </h1>

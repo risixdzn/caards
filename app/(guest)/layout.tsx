@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Caards",
     description: "Study with ease by creating flashcards with the power of AI.",
     icons: {
-        icon: "../Caards-Logo-RECOLOR.svg",
+        icon: "../svg/Caards_Logo.svg",
     },
 };
 

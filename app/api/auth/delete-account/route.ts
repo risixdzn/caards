@@ -16,9 +16,13 @@ export async function POST(request: NextRequest) {
         },
     });
 
+    //development ones
     cookies().delete("next-auth.session-token");
     cookies().delete("next-auth.callback-url");
     cookies().delete("next-auth.csrf-token");
-
+    //production ones
+    cookies().delete("__Secure-next-auth.session-token");
+    cookies().delete("__Secure-next-auth.callback-url");
+    cookies().delete("__Host-next-auth.csrf-token");
     return NextResponse.json("Deleted", { status: 200 });
 }

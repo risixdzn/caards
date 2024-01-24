@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import Navbar from "@/components/Dashboard/Navbar";
 import { ReactQueryProvider } from "@/lib/ReactQueryProvider";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     title: "Dashboard",
     description: "Study with ease by creating flashcards with the power of AI.",
     icons: {
-        icon: "../Caards-Logo-RECOLOR.svg",
+        icon: "../svg/Caards_Logo.svg",
     },
 };
 
@@ -25,9 +26,12 @@ export default async function RootLayout({
     return (
         <ReactQueryProvider>
             <html lang='en' className='scroll-smooth'>
-                <body className={`${figtree.className} antialised`}>
-                    {modal}
-                    {children}
+                <body className={`${figtree.className} antialised select-none`}>
+                    <Navbar />
+                    <main className='pt-28 container'>
+                        {modal}
+                        {children}
+                    </main>
                 </body>
             </html>
         </ReactQueryProvider>
