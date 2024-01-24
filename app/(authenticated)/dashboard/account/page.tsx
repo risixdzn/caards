@@ -9,7 +9,7 @@ export default async function Account() {
 
     return (
         <div>
-            <h1>Signed in as:</h1>
+            <h1 className='text-2xl font-heading'>Account Settings</h1>
             <Avatar>
                 <AvatarImage src={session?.user?.image as string} />
                 <AvatarFallback>{session?.user?.name?.slice(0, 2).toUpperCase()}</AvatarFallback>

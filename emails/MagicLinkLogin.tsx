@@ -17,9 +17,7 @@ interface LoginCodeEmailProps {
     url: string;
 }
 
-const baseUrl = process.env.NEXTAUTH_URL
-    ? `https://${process.env.NEXTAUTH_URL}`
-    : "http://localhost:3000";
+const baseUrl = process.env.NEXTAUTH_URL ? `${process.env.NEXTAUTH_URL}` : "";
 
 export const MagicLinkLogin = ({ url }: LoginCodeEmailProps) => (
     <Html>
