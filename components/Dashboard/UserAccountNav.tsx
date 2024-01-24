@@ -19,7 +19,9 @@ export default async function UserAccountNav() {
                 <DropdownMenuTrigger>
                     <div className='flex gap-4'>
                         <div className='flex flex-col items-end'>
-                            <h4 className='text-sm font-semibold'>{session?.user?.name}</h4>
+                            <h4 className='text-sm font-semibold whitespace-nowrap'>
+                                {session?.user?.name}
+                            </h4>
                             <p className='text-sm text-muted-foreground whitespace-nowrap'>
                                 Basic plan
                             </p>
