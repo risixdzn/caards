@@ -55,9 +55,8 @@ export const MagicLinkLogin = ({ url }: LoginCodeEmailProps) => (
 export default MagicLinkLogin;
 
 const logo = {
-    borderRadius: 21,
     width: 42,
-    height: 42,
+    height: 120,
 };
 
 const main = {
@@ -112,15 +111,4 @@ const reportLink = {
 const hr = {
     borderColor: "#dfe1e4",
     margin: "42px 0 26px",
-};
-
-const code = {
-    fontFamily: "monospace",
-    fontWeight: "700",
-    padding: "1px 4px",
-    backgroundColor: "#dfe1e4",
-    letterSpacing: "-0.3px",
-    fontSize: "21px",
-    borderRadius: "4px",
-    color: "#3c4149",
 };

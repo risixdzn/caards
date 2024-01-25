@@ -1,4 +1,4 @@
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { DefaultSession, NextAuthOptions, getServerSession } from "next-auth";
 import { prisma } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -27,13 +27,18 @@ export const authOptions: NextAuthOptions = {
         strategy: "jwt",
     },
     callbacks: {
-        jwt: async ({ token }) => {
+        jwt: async ({ token, trigger, session }) => {
             //finds the user in the database
             const db_user = await prisma.user.findFirst({
                 where: {
                     email: token.email,
                 },
             });
+
+            if (trigger === "update" && session?.name) {
+                token.name = session.name;
+            }
+
             //binds the db user id to the token
             if (db_user) {
                 token.id = db_user.id;
@@ -92,8 +97,9 @@ export const authOptions: NextAuthOptions = {
     },
 };
 
-export const getAuthSession = () => {
-    return getServerSession(authOptions);
+export const getUserSession = async () => {
+    const session = await getServerSession(authOptions);
+    return session?.user;
 };
 
 export const signOutUser = ({ redirect }: { redirect?: string }) => {

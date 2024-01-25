@@ -7,7 +7,7 @@ import UserAccountNav from "./UserAccountNav";
 
 export default function Navbar() {
     return (
-        <header className='fixed w-full h-20 z-[10] flex justify-center border-b-[1px]'>
+        <header className='fixed w-full h-20 z-[10] flex justify-center border-b-[1px] bg-background'>
             <div className='w-full px-6 flex justify-between items-center'>
                 <div className='flex items-center gap-6'>
                     <div id='logo'>
