@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getAuthSession } from "@/lib/auth";
+import { getUserSession } from "@/lib/auth";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -7,11 +7,16 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { notFound } from "next/navigation";
 
 import Link from "next/link";
 
 export default async function UserAccountNav() {
-    const session = await getAuthSession();
+    const user = await getUserSession();
+
+    if (!user) {
+        return notFound();
+    }
 
     return (
         <>
@@ -19,17 +24,15 @@ export default async function UserAccountNav() {
                 <DropdownMenuTrigger>
                     <div className='flex gap-4'>
                         <div className='flex flex-col items-end'>
-                            <h4 className='text-sm font-semibold whitespace-nowrap'>
-                                {session?.user?.name}
-                            </h4>
+                            <h4 className='text-sm font-semibold whitespace-nowrap'>{user.name}</h4>
                             <p className='text-sm text-muted-foreground whitespace-nowrap'>
                                 Basic plan
                             </p>
                         </div>
                         <Avatar>
-                            <AvatarImage src={session?.user?.image as string} />
+                            <AvatarImage src={user.image as string} />
                             <AvatarFallback className='font-semibold text-muted-foreground'>
-                                {session?.user?.name?.slice(0, 2).toUpperCase()}
+                                {user.name?.slice(0, 2).toUpperCase()}
                             </AvatarFallback>
                         </Avatar>
                     </div>
@@ -37,12 +40,10 @@ export default async function UserAccountNav() {
                 <DropdownMenuContent align='end'>
                     <div className='flex items-center justify-start gap-2 p-2'>
                         <div className='flex flex-col space-y-1 leading-none'>
-                            {session?.user?.name && (
-                                <p className='font-medium'>{session?.user?.name}</p>
-                            )}
-                            {session?.user?.email && (
+                            {user.name && <p className='font-medium'>{user.name}</p>}
+                            {user.email && (
                                 <p className='w-[200px] truncate text-sm text-muted-foreground'>
-                                    {session?.user?.email}
+                                    {user.email}
                                 </p>
                             )}
                         </div>

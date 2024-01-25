@@ -22,7 +22,7 @@ export default async function RootLayout({
     children: ReactNode;
     modal: ReactNode;
 }) {
-    // const session = await getAuthSession();
+    // const session = await getUserSession();
     return (
         <ReactQueryProvider>
             <html lang='en' className='scroll-smooth'>
