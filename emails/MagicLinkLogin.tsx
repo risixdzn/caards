@@ -27,8 +27,8 @@ export const MagicLinkLogin = ({ url }: LoginCodeEmailProps) => (
             <Container style={container}>
                 <Img
                     src={`${baseUrl}/Caards_TextLogo.png`}
-                    width='42'
-                    height='120'
+                    width='120'
+                    height='42'
                     alt='Caards'
                     style={logo}
                 />
@@ -55,8 +55,8 @@ export const MagicLinkLogin = ({ url }: LoginCodeEmailProps) => (
 export default MagicLinkLogin;
 
 const logo = {
-    width: 42,
-    height: 120,
+    width: 120,
+    height: 42,
 };
 
 const main = {
