@@ -1,5 +1,5 @@
 import { MousePointerClick } from "lucide-react";
-import Flashcard from "../Flashcard";
+import Flashcard from "./HomeFlashcard";
 
 export default function WhatIsAFlashcard() {
     return (
