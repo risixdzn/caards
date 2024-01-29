@@ -89,6 +89,20 @@
     .scrollToTop {
         animation: scrollTop 30s linear;
     }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .hiddenscrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .hiddenscrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .customscroll {
+        @apply scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-thumb-neutral-300 scrollbar-track-accent;
+    }
 
     @keyframes scrollTop {
         from {

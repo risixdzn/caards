@@ -6,6 +6,7 @@ import StudyingPossibilities from "@/components/Home/StudyingPossibilities";
 import Workflow from "@/components/Home/Workflow";
 import Pricing from "@/components/Home/Pricing";
 import Remember from "@/components/Home/Remember";
+import Examples from "@/components/Home/Examples";
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
             <Hero />
             <WhatIsAFlashcard />
             <Workflow />
+            <Examples />
             <StudyingPossibilities />
             <Remember />
             <Pricing />

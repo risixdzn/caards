@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Flashcard from "../Flashcard";
+import Flashcard from "./HomeFlashcard";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction } from "react";

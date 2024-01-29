@@ -104,5 +104,6 @@ module.exports = {
         require("tailwindcss/nesting")("postcss-nesting"),
         require("tailwindcss")(),
         require("autoprefixer")(),
+        require("tailwind-scrollbar")({ nocompatible: true }),
     ],
 };
