@@ -4,6 +4,7 @@ import UpgradeBtn from "./UpgradeBtn";
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import UserAccountNav from "./UserAccountNav";
+import Link from "next/link";
 
 export default function Navbar() {
     return (
@@ -24,8 +25,8 @@ export default function Navbar() {
                     <nav className='px-10 text-[0.925rem] font-semibold'>
                         <ul className='flex gap-10'>
                             <li>Overview</li>
-                            <li>Decks</li>
-                            <li>Collections</li>
+                            <Link href='/dashboard/decks'>Decks</Link>
+                            <Link href='/dashboard/collections'>Collections</Link>
                         </ul>
                     </nav>
                 </div>
