@@ -57,6 +57,7 @@ model User {
   image    String?
   accounts Account[]
   sessions Session[]
+  decks Deck[]
 }
 
 model VerificationToken {
@@ -65,4 +66,18 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Deck {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  userId      String
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+   
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @default(now()) @map(name: "updated_at")
+
+  @@index([userId], name: "userId")
 }

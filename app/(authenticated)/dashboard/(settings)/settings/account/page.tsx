@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 
 import EditDisplayName from "@/components/Dashboard/Account/EditDisplayName";
 import { Input } from "@/components/ui/input";
+import { Heading } from "@/components/Dashboard/Typography";
 
 const UserInfo = ({
     user,
@@ -56,7 +57,7 @@ export default async function Account() {
 
     return (
         <div className='space-y-6'>
-            <h1 className='text-4xl font-heading'>Account Settings</h1>
+            <Heading>Account Settings</Heading>
             <UserInfo user={user} />
             <Card id='displayname' className='p-8 bg-background shadow-none relative'>
                 <CardTitle className='font-heading tracking-wide'>Display name</CardTitle>

@@ -1,9 +1,11 @@
 import "@/app/globals.css";
 import Navbar from "@/components/Dashboard/Navbar";
+import { Toaster } from "@/components/ui/toaster";
 import { ReactQueryProvider } from "@/lib/ReactQueryProvider";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import { ReactNode } from "react";
+import { QueryClientProvider, QueryClient } from "react-query";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -18,20 +20,30 @@ export const metadata: Metadata = {
 export default async function RootLayout({
     children,
     modal,
+    drawer,
 }: {
     children: ReactNode;
     modal: ReactNode;
+    drawer: ReactNode;
 }) {
     // const session = await getUserSession();
     return (
         <ReactQueryProvider>
             <html lang='en' className='scroll-smooth'>
-                <body className={`${figtree.className} antialised select-none`}>
-                    <Navbar />
-                    <main className='pt-28 container'>
-                        {modal}
-                        {children}
-                    </main>
+                <body
+                    className={`${figtree.className} antialised select-none min-h-screen bg-background`}
+                >
+                    <div vaul-drawer-wrapper=''>
+                        <div className='relative flex min-h-screen flex-col bg-background'>
+                            <Navbar />
+                            <Toaster />
+                            <main className='pt-28 container pb-16'>
+                                {modal}
+                                {drawer}
+                                {children}
+                            </main>
+                        </div>
+                    </div>
                 </body>
             </html>
         </ReactQueryProvider>

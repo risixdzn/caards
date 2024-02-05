@@ -53,10 +53,10 @@ export default async function UserAccountNav() {
                         <Link href='/dashboard'>Dashboard</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <Link href='/dashboard/billing'>Billing</Link>
+                        <Link href='/dashboard/settings/billing'>Billing</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <Link href='/dashboard/settings'>Settings</Link>
+                        <Link href='/dashboard/settings/account'>Settings</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <Link href='/auth/signout'>
