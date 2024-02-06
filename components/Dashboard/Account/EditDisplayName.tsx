@@ -66,9 +66,9 @@ export default function EditDisplayName({
                     name='display_name'
                     render={({ field }) => (
                         <FormItem>
-                            <div className='flex gap-2'>
-                                <Input {...field} className='w-72' />
-                                <Button disabled={loading || !isValid}>
+                            <div className='flex gap-2 lg:flex-row flex-col'>
+                                <Input {...field} className='w-full lg:w-72' />
+                                <Button disabled={loading || !isValid} className='w-full lg:w-auto'>
                                     {!loading ? (
                                         <Save className='h-4 w-4 mr-2' />
                                     ) : (

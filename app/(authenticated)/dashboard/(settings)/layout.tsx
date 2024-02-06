@@ -10,7 +10,7 @@ export default function SettingLayout({ children }: { children: ReactNode }) {
     return (
         <SessionProvider>
             <Toaster />
-            <div className='w-full flex gap-10 sticky top-24'>
+            <div className='w-full flex gap-10 sticky top-10'>
                 <aside className='hidden w-[300px] flex-col md:flex space-y-4'>
                     <h4 className='font-semibold text-sm'>Navigation</h4>
                     <ul className='w-full space-y-2 '>

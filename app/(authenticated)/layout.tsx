@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { BottomNav } from "@/components/Dashboard/BottomNav";
 import Navbar from "@/components/Dashboard/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { ReactQueryProvider } from "@/lib/ReactQueryProvider";
@@ -31,13 +32,14 @@ export default async function RootLayout({
         <ReactQueryProvider>
             <html lang='en' className='scroll-smooth'>
                 <body
-                    className={`${figtree.className} antialised select-none min-h-screen bg-background`}
+                    className={`${figtree.className} antialised select-none min-h-screen bg-background hiddenscrollbar`}
                 >
                     <div vaul-drawer-wrapper=''>
                         <div className='relative flex min-h-screen flex-col bg-background'>
                             <Navbar />
                             <Toaster />
-                            <main className='pt-28 container pb-16'>
+                            <BottomNav />
+                            <main className='pt-28 container pb-28'>
                                 {modal}
                                 {drawer}
                                 {children}
