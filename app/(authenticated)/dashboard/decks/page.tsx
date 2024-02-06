@@ -12,9 +12,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import NewDeckDrawer from "@/components/Dashboard/Decks/NewDeckDrawer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Deck as DeckComponent } from "@/components/Dashboard/Decks/Deck";
-import CardsIcon from "@/public/svg/CardsIcon";
-import { Badge } from "@/components/ui/badge";
+import { DeckComponent } from "@/components/Dashboard/Decks/Deck";
 import { motion } from "framer-motion";
 
 export default function Decks() {
@@ -34,13 +32,14 @@ export default function Decks() {
                     New deck <Plus className='w-5 h-5 inline-block ml-2' />
                 </Button>
             </NewDeckDrawer>
-            <div className='grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-6'>
+            <div className='grid place-items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-6'>
                 {!isLoading ? (
                     <>
                         {data?.length > 0 ? (
                             <>
                                 {data.map((deck: Deck, index: number) => (
                                     <motion.div
+                                        className='w-full'
                                         key={index}
                                         initial={
                                             index < 35
@@ -50,23 +49,7 @@ export default function Decks() {
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: index * 0.075 }}
                                     >
-                                        <DeckComponent key={index}>
-                                            <div className='w-full flex justify-between'>
-                                                <h3 className='text-xl font-semibold tracking-tight w-full whitespace-nowrap truncate'>
-                                                    <CardsIcon className='fill-foreground inline-block scale-75 -translate-y-1 mr-2' />
-                                                    {deck.title}
-                                                </h3>
-                                                <div className='w-12 h-6 bg-accent rounded-full border-4 border-white shadow-md'></div>
-                                            </div>
-                                            <p className='whitespace-nowrap truncate text-sm text-muted-foreground'>
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                elit. Exercitationem error assumenda enim voluptate
-                                                quis, quaerat nobis. Fugiat eum, excepturi porro
-                                                laborum quasi rem esse harum neque non soluta
-                                                aliquam architecto.
-                                            </p>
-                                            <Badge className=''>15 cards</Badge>
-                                        </DeckComponent>
+                                        <DeckComponent key={index} deck={deck} />
                                     </motion.div>
                                 ))}
                             </>

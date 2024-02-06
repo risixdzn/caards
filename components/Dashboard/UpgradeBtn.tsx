@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 export default function UpgradeBtn() {
     return (
-        <Button className='rounded-full'>
+        <Button className='rounded-full whitespace-nowrap'>
             <Sparkles className='mr-2 w-5 h-5' />
             Upgrade to pro
         </Button>

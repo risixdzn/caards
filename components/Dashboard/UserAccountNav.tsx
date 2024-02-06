@@ -10,6 +10,8 @@ import {
 import { notFound } from "next/navigation";
 
 import Link from "next/link";
+import { Badge } from "../ui/badge";
+import { Sparkle } from "lucide-react";
 
 export default async function UserAccountNav() {
     const user = await getUserSession();
@@ -22,12 +24,15 @@ export default async function UserAccountNav() {
         <>
             <DropdownMenu>
                 <DropdownMenuTrigger>
-                    <div className='flex gap-4'>
-                        <div className='flex flex-col items-end'>
+                    <div className='flex flex-row-reverse lg:flex-row gap-3'>
+                        <div className='flex flex-col items-start lg:items-end'>
                             <h4 className='text-sm font-semibold whitespace-nowrap'>{user.name}</h4>
-                            <p className='text-sm text-muted-foreground whitespace-nowrap'>
-                                Basic plan
-                            </p>
+                            <div className='text-sm text-muted-foreground whitespace-nowrap flex items-center gap-2'>
+                                <span className='hidden lg:block'>Basic plan </span>
+                                <Badge className='lg:hidden flex'>
+                                    <Sparkle className='w-3 h-3 inline-block mr-1' /> Upgrade to pro
+                                </Badge>
+                            </div>
                         </div>
                         <Avatar>
                             <AvatarImage src={user.image as string} />

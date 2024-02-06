@@ -75,7 +75,7 @@ export default async function Account() {
                     This is the email you can use to sign in.
                 </CardDescription>
                 <CardContent className='p-0'>
-                    <Input className='w-72' disabled placeholder={user.email as string} />
+                    <Input className='w-full lg:w-72' disabled placeholder={user.email as string} />
                 </CardContent>
             </Card>
 
@@ -96,10 +96,6 @@ export default async function Account() {
                     <DeleteAccount />
                 </CardFooter>
             </Card>
-
-            <Link href='/auth/signout'>
-                <Button>Sign Out</Button>
-            </Link>
         </div>
     );
 }
